@@ -123,65 +123,71 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt);displa
   body>*{display:none!important;}
   #prtarea{display:block!important;}
 }
-/* ETIQUETTES */
+/* ETIQUETTES - Styles aperçu (miroir des styles d'impression) */
+/* ─── RÉGLETTE ─── */
 .rgl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm;}
-.rgl-et{border:1px solid #999;background:#fff;display:flex;align-items:stretch;min-height:32px;break-inside:avoid;}
-.rgl-l{flex:1;min-width:0;padding:2px 4px;display:flex;flex-direction:column;justify-content:center;gap:1px;}
-.rgl-logo{height:13px;object-fit:contain;display:block;}
-.rgl-lib{font-family:'Inter',sans-serif;font-size:6px;font-weight:700;line-height:1.2;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
-.rgl-ref{font-size:5px;color:#555;font-family:monospace;}
-.rgl-bc{flex-shrink:0;padding:2px 3px;border-left:1px solid #ddd;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.rgl-ean{font-size:5px;font-family:monospace;text-align:center;margin-top:1px;}
-.rgl-r{flex-shrink:0;min-width:42px;background:#FFFA00;border-left:1px solid #ccc;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2px 4px;}
-.rgl-prc{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:#cc0000;line-height:1;}
-.rgl-dev{font-size:6px;font-weight:700;color:#cc0000;font-family:'Barlow Condensed',sans-serif;}
-.demi-et{border:1.5px solid #bbb;background:#fff;width:100%;padding:6mm 8mm;display:flex;flex-direction:column;min-height:132mm;break-inside:avoid;margin-bottom:2mm;}
-.demi-hdr{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ccc;padding-bottom:3mm;margin-bottom:5mm;}
-.demi-hl{display:flex;align-items:center;gap:8px;}
-.demi-hl img{height:36px;object-fit:contain;}
-.demi-hl span{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;color:#cc0000;}
+.rgl-et{border:1px solid #aaa;background:#fff;display:grid;grid-template-rows:auto auto auto;break-inside:avoid;position:relative;min-height:32px;}
+.rgl-top{display:flex;align-items:center;gap:3px;padding:1.5mm 2mm 0;border-bottom:1px solid #eee;}
+.rgl-sn{font-size:5px;font-weight:900;color:#cc0000;font-style:italic;text-transform:uppercase;}
+.rgl-ville{font-size:4.5px;color:#333;margin-left:4px;}
+.rgl-mid{padding:1mm 2mm;}
+.rgl-lib{font-size:7px;font-weight:900;text-transform:uppercase;line-height:1.2;}
+.rgl-ref{font-size:5px;color:#555;font-family:monospace;margin-top:1px;}
+.rgl-bc-row{padding:0.5mm 2mm 1mm;display:flex;flex-direction:column;align-items:flex-start;}
+.rgl-ean{font-size:4px;font-family:monospace;}
+.rgl-r{position:absolute;right:0;top:0;bottom:0;width:30%;background:#FFFA00;border-left:1px solid #ccc;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.rgl-fl{font-size:8px;}
+.rgl-prc{font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:900;color:#000;line-height:1;}
+.rgl-dev{font-size:5px;font-weight:700;color:#000;}
+/* ─── DEMI A4 ─── */
+.demi-et{border:1.5px solid #bbb;background:#fff;width:100%;padding:6mm 8mm;display:flex;flex-direction:column;min-height:130mm;break-inside:avoid;margin-bottom:2mm;box-sizing:border-box;}
+.demi-hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:2mm;}
+.demi-hl{display:flex;align-items:center;gap:6px;}
 .demi-hr{text-align:right;}
-.demi-hr .sn{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;color:#cc0000;}
-.demi-hr .st{font-size:11px;color:#333;}
-.demi-lib{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:800;text-align:center;text-transform:uppercase;line-height:1.2;flex:1;display:flex;align-items:center;justify-content:center;padding:4mm 0;}
-.demi-pz{text-align:center;}
-.demi-prc{font-family:'Barlow Condensed',sans-serif;font-size:70px;font-weight:800;line-height:1;}
-.demi-old{font-size:20px;text-decoration:line-through;color:#999;}
-.demi-promo{display:inline-block;background:#cc0000;color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;padding:3px 14px;border-radius:3px;margin-top:4px;}
-.demi-ftr{display:flex;justify-content:space-between;border-top:1px solid #ccc;padding-top:2mm;margin-top:auto;font-size:10px;color:#666;}
-.a4-et{border:1.5px solid #bbb;background:#fff;width:100%;padding:10mm 14mm;display:flex;flex-direction:column;min-height:185mm;break-inside:avoid;}
-.a4-hdr{display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #ccc;padding-bottom:5mm;margin-bottom:8mm;}
-.a4-hl{display:flex;align-items:center;gap:12px;}
-.a4-hl img{height:56px;object-fit:contain;}
-.a4-hl span{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;color:#cc0000;}
+.demi-sn{font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:900;color:#cc0000;text-transform:uppercase;}
+.demi-st{font-size:10px;color:#333;}
+.demi-lib{font-family:Arial,Helvetica,sans-serif;font-size:26px;font-weight:900;text-align:center;text-transform:uppercase;line-height:1.15;flex:1;display:flex;align-items:center;justify-content:center;padding:3mm 0;}
+.demi-spacer{flex:1;}
+.demi-pz{text-align:center;padding-bottom:2mm;}
+.demi-prc{font-family:Arial,Helvetica,sans-serif;font-size:62px;font-weight:900;color:#000;line-height:1;}
+.demi-ftr{display:flex;justify-content:space-between;font-size:10px;color:#333;margin-top:auto;}
+.demi-ref{text-decoration:underline;}
+/* ─── A4 PAYSAGE ─── */
+.a4-et{border:1.5px solid #bbb;background:#fff;width:100%;padding:10mm 14mm;display:flex;flex-direction:column;min-height:185mm;break-inside:avoid;box-sizing:border-box;}
+.a4-hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:4mm;}
+.a4-hl{display:flex;align-items:center;gap:10px;}
 .a4-hr{text-align:right;}
-.a4-hr .sn{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;color:#cc0000;}
-.a4-hr .st{font-size:14px;color:#333;}
-.a4-lib{font-family:'Barlow Condensed',sans-serif;font-size:56px;font-weight:800;text-align:center;text-transform:uppercase;line-height:1.2;flex:1;display:flex;align-items:center;justify-content:center;padding:8mm 0;}
-.a4-pz{text-align:center;}
-.a4-prc{font-family:'Barlow Condensed',sans-serif;font-size:120px;font-weight:800;line-height:1;}
-.a4-old{font-size:30px;text-decoration:line-through;color:#999;}
-.a4-promo{display:inline-block;background:#cc0000;color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;padding:4px 20px;border-radius:4px;margin-top:6px;}
-.a4-ftr{display:flex;justify-content:space-between;border-top:2px solid #ccc;padding-top:4mm;margin-top:auto;font-size:13px;color:#666;}
-.mbl-et{border:1.5px solid #aaa;background:#fff;width:100%;padding:4mm 6mm;display:flex;flex-direction:column;break-inside:avoid;margin-bottom:4mm;}
-.mbl-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:3mm;}
-.mbl-hl{display:flex;align-items:center;gap:6px;}
-.mbl-hl img{height:26px;object-fit:contain;}
-.mbl-hl span{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;color:#cc0000;}
-.mbl-hr{text-align:right;}
-.mbl-hr .sn{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;color:#cc0000;}
-.mbl-hr .st{font-size:10px;color:#333;}
-.mbl-body{display:flex;gap:4mm;}
-.mbl-fiche{border:1px solid #ccc;padding:2mm 3mm;min-width:105px;flex-shrink:0;}
-.mbl-fl{font-size:8px;color:#888;text-transform:uppercase;}
-.mbl-fv{font-size:12px;font-weight:700;line-height:1.3;margin-bottom:2mm;}
-.mbl-ean{font-size:8px;font-family:monospace;color:#555;border-top:1px solid #eee;padding-top:1mm;margin-top:2mm;}
-.mbl-carac{border:1px solid #e0dda0;background:#FAFACC;padding:2mm 3mm;flex:1;font-size:9px;color:#999;font-style:italic;min-height:24mm;}
-.mbl-ct{font-size:8px;font-weight:700;color:#aa8800;margin-bottom:1mm;text-transform:uppercase;}
-.mbl-pz{flex-shrink:0;min-width:65px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-left:3mm;}
-.mbl-prc{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:800;color:#cc0000;line-height:1;}
-.mbl-dev{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;color:#cc0000;}
-</style>
+.a4-sn{font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:900;color:#cc0000;text-transform:uppercase;}
+.a4-st{font-size:13px;color:#333;}
+.a4-lib{font-family:Arial,Helvetica,sans-serif;font-size:52px;font-weight:900;text-align:center;text-transform:uppercase;line-height:1.15;flex:1;display:flex;align-items:center;justify-content:center;padding:6mm 0;}
+.a4-spacer{flex:1;}
+.a4-pz{text-align:center;padding-bottom:4mm;}
+.a4-prc{font-family:Arial,Helvetica,sans-serif;font-size:110px;font-weight:900;color:#000;line-height:1;}
+.a4-ftr{display:flex;justify-content:space-between;font-size:12px;color:#333;margin-top:auto;}
+.a4-ref{text-decoration:underline;}
+/* ─── MEUBLE ─── */
+.mbl-et{border:1px solid #aaa;background:#fff;width:100%;padding:3mm;display:flex;flex-direction:column;break-inside:avoid;margin-bottom:3mm;min-height:90mm;box-sizing:border-box;}
+.mbl-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:2mm;border-bottom:1px solid #ddd;padding-bottom:1mm;}
+.mbl-hl{display:flex;align-items:center;gap:4px;}
+.mbl-hr{text-align:right;line-height:1.2;}
+.mbl-sn{font-size:8px;font-weight:900;color:#cc0000;text-transform:uppercase;font-style:italic;}
+.mbl-st{font-size:7px;color:#333;}
+.mbl-label{font-size:8px;font-weight:700;color:#333;border:1px solid #999;padding:0 3px;}
+.mbl-body{display:flex;gap:2mm;flex:1;}
+.mbl-fiche{border:1px solid #ccc;padding:1.5mm;width:90px;flex-shrink:0;font-size:8px;}
+.mbl-row{display:grid;grid-template-columns:40px 1fr;gap:1mm;margin-bottom:1mm;}
+.mbl-fl{font-style:italic;color:#555;font-size:7px;}
+.mbl-fv{font-weight:700;font-size:8px;line-height:1.2;}
+.mbl-gencod{font-size:6.5px;font-family:monospace;color:#444;margin-top:2mm;border-top:1px solid #eee;padding-top:1mm;font-style:italic;}
+.mbl-carac{border:1px solid #e0dda0;background:#FAFACC;padding:1.5mm;flex:1;display:flex;flex-direction:column;}
+.mbl-ct{font-style:italic;font-size:7px;font-weight:700;color:#aa8800;margin-bottom:1mm;}
+.mbl-carac-body{flex:1;}
+.mbl-dims{font-size:6.5px;font-style:italic;color:#555;margin-top:auto;}
+.mbl-pz{flex-shrink:0;width:55px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-left:2mm;}
+.mbl-prc{font-family:Georgia,serif;font-size:30px;font-weight:900;color:#cc0000;line-height:1;text-align:center;}
+.mbl-dev{font-size:10px;font-weight:700;color:#cc0000;font-style:italic;}
+.mbl-promo-tag{background:#cc0000;color:#fff;font-size:7px;font-weight:700;padding:1px 4px;border-radius:2px;margin-top:2px;}
+.mbl-ftr{font-size:6px;color:#333;line-height:1.4;border-top:1px solid #ddd;padding-top:1.5mm;margin-top:1.5mm;}</style>
 </head>
 <body>
 
@@ -732,67 +738,90 @@ function bcSVG(data,w,h){
 function logoTag(h){ return '<img src="'+storeLogo+'" style="height:'+h+';object-fit:contain;" alt="">'; }
 
 function etRgl(a){
+  // Modèle Réglette : identique au PDF page 3
+  // Logo | Libellé + Code + EAN (colonne centrale) | Prix sur fond jaune
   var p=xpf(a.promo&&a.promo>0?a.promo:a.pv), ean=a.ean?ne(a.ean):'';
-  var bc=ean?bcSVG(ean,46,14):'';
+  var bc=ean?bcSVG(ean,46,12):'';
+  var sn=gSN(), st=gST();
   return '<div class="rgl-et">'+
-    '<div class="rgl-l">'+logoTag('13px')+'<div class="rgl-lib">'+a.lib+'</div><div class="rgl-ref">Code: '+(a.code||'—')+'</div></div>'+
-    (ean?'<div class="rgl-bc">'+bc+'<div class="rgl-ean">'+ean+'</div></div>':'')+
-    '<div class="rgl-r">'+(p?'<div class="rgl-prc">'+p+'</div><div class="rgl-dev">XPF</div>':'<div class="rgl-prc" style="font-size:10px;color:#aaa;">N/D</div>')+'</div>'+
+    '<div class="rgl-top">'+
+      '<div class="rgl-logo">'+logoTag('16px')+'</div>'+
+      '<div class="rgl-brand"><span class="rgl-sn">'+sn+'</span>'+(st?'<span class="rgl-ville">'+st+'</span>':'')+'</div>'+
+    '</div>'+
+    '<div class="rgl-mid">'+
+      '<div class="rgl-lib">'+a.lib+'</div>'+
+      '<div class="rgl-ref">code: <span>'+(a.code||'—')+'</span></div>'+
+    '</div>'+
+    '<div class="rgl-bc-row">'+
+      (ean?bc+'<div class="rgl-ean">'+ean+'</div>':'')+
+    '</div>'+
+    '<div class="rgl-r">'+(p?'<div class="rgl-fl">↑</div><div class="rgl-prc">'+p+'</div><div class="rgl-dev">XPF</div>':'<div class="rgl-prc" style="font-size:8px;color:#aaa;">N/D</div>')+'</div>'+
   '</div>';
 }
 
 function etDemi(a){
+  // Modèle Demi-A4 : identique au PDF page 2 (portrait, 2 par feuille)
   var pv=xpf(a.pv), promo=xpf(a.promo&&a.promo>0?a.promo:null), dp=promo||pv;
   var ean=a.ean?ne(a.ean):'', sn=gSN(), st=gST();
+  var code6=a.code?String(a.code).padStart(6,'0'):'';
   return '<div class="demi-et">'+
     '<div class="demi-hdr">'+
-      '<div class="demi-hl">'+logoTag('36px')+'<span>'+sn+'</span></div>'+
-      '<div class="demi-hr">'+(sn?'<div class="sn">'+sn+'</div>':'')+(st?'<div class="st">Tel : '+st+'</div>':'')+'</div>'+
+      '<div class="demi-hl">'+logoTag('30px')+'</div>'+
+      '<div class="demi-hr"><div class="demi-sn">'+(sn||'TAHITI PAS CHER')+'</div>'+(st?'<div class="demi-st">Tel : '+st+'</div>':'')+'</div>'+
     '</div>'+
     '<div class="demi-lib">'+a.lib+'</div>'+
-    '<div class="demi-pz">'+
-      (promo&&pv?'<div class="demi-old">'+pv+' F</div>':'')+
-      (dp?'<div class="demi-prc">'+dp+' F</div>':'')+
-      (promo?'<div><span class="demi-promo">PROMO</span></div>':'')+
-    '</div>'+
-    '<div class="demi-ftr"><span>'+(a.code?'Réf. '+String(a.code).padStart(6,'0'):'')+'</span><span style="font-family:monospace;">'+ean+'</span></div>'+
+    '<div class="demi-spacer"></div>'+
+    '<div class="demi-pz">'+(dp?'<div class="demi-prc">'+dp+' F</div>':'')+'</div>'+
+    '<div class="demi-ftr"><span class="demi-ref">'+(code6?'<u>Réf. '+code6+'</u>':'')+'</span><span class="demi-ean" style="font-family:monospace;font-size:11px;">'+ean+'</span></div>'+
   '</div>';
 }
 
 function etA4(a){
+  // Modèle A4 complet : identique au PDF page 1 (paysage 1 par feuille)
   var pv=xpf(a.pv), promo=xpf(a.promo&&a.promo>0?a.promo:null), dp=promo||pv;
   var ean=a.ean?ne(a.ean):'', sn=gSN(), st=gST();
+  var code6=a.code?String(a.code).padStart(6,'0'):'';
   return '<div class="a4-et">'+
     '<div class="a4-hdr">'+
-      '<div class="a4-hl">'+logoTag('56px')+'<span>'+sn+'</span></div>'+
-      '<div class="a4-hr">'+(sn?'<div class="sn">'+sn+'</div>':'')+(st?'<div class="st">Tel : '+st+'</div>':'')+'</div>'+
+      '<div class="a4-hl">'+logoTag('52px')+'</div>'+
+      '<div class="a4-hr"><div class="a4-sn">'+(sn||'TAHITI PAS CHER')+'</div>'+(st?'<div class="a4-st">Tel : '+st+'</div>':'')+'</div>'+
     '</div>'+
     '<div class="a4-lib">'+a.lib+'</div>'+
-    '<div class="a4-pz">'+
-      (promo&&pv?'<div class="a4-old">'+pv+' F</div>':'')+
-      (dp?'<div class="a4-prc">'+dp+' F</div>':'')+
-      (promo?'<div><span class="a4-promo">PROMO</span></div>':'')+
-    '</div>'+
-    '<div class="a4-ftr"><span>'+(a.code?String(a.code).padStart(6,'0'):'')+'</span><span style="font-family:monospace;">'+ean+'</span></div>'+
+    '<div class="a4-spacer"></div>'+
+    '<div class="a4-pz">'+(dp?'<div class="a4-prc">'+dp+' F</div>':'')+'</div>'+
+    '<div class="a4-ftr"><span class="a4-ref">'+(code6?'<u>Réf. '+code6+'</u>':'')+'</span><span class="a4-ean" style="font-family:monospace;font-size:13px;">'+ean+'</span></div>'+
   '</div>';
 }
 
 function etMbl(a){
+  // Modèle Meuble : identique au PDF page 4 (3 colonnes, fiche détaillée)
   var pv=xpf(a.pv), promo=xpf(a.promo&&a.promo>0?a.promo:null), dp=promo||pv;
   var ean=a.ean?ne(a.ean):'', sn=gSN(), st=gST();
+  var code6=a.code?String(a.code).padStart(6,'0'):'';
   return '<div class="mbl-et">'+
     '<div class="mbl-hdr">'+
-      '<div class="mbl-hl">'+logoTag('26px')+'<span>'+sn+'</span></div>'+
-      '<div class="mbl-hr">'+(sn?'<div class="sn">'+sn+'</div>':'')+(st?'<div class="st">Tel : '+st+'</div>':'')+'</div>'+
+      '<div class="mbl-hl">'+logoTag('22px')+'</div>'+
+      '<div class="mbl-hr"><div class="mbl-sn">'+(sn||'TAHITI PAS CHER')+'</div>'+(st?'<div class="mbl-st">Tel : '+st+'</div>':'')+'</div>'+
+      '<div class="mbl-label">TPC '+(sn||'')+'</div>'+
     '</div>'+
     '<div class="mbl-body">'+
       '<div class="mbl-fiche">'+
-        '<div class="mbl-fl">Libellé</div><div class="mbl-fv">'+a.lib+'</div>'+
-        '<div class="mbl-fl">Code</div><div style="font-weight:700;font-size:12px;">'+(a.code||'—')+'</div>'+
-        (ean?'<div class="mbl-ean">Gencod '+ean+'</div>':'')+
+        '<div class="mbl-row"><div class="mbl-fl">Libellé</div><div class="mbl-fv">'+a.lib+'</div></div>'+
+        '<div class="mbl-row"><div class="mbl-fl">Code</div><div class="mbl-fv">'+code6+'</div></div>'+
+        (ean?'<div class="mbl-gencod">Gencod '+ean+'</div>':'')+
       '</div>'+
-      '<div class="mbl-carac"><div class="mbl-ct">Caractéristiques</div></div>'+
-      '<div class="mbl-pz">'+(dp?'<div class="mbl-prc">'+dp+'</div><div class="mbl-dev">Frs CFP</div>':'')+(promo?'<div style="background:#cc0000;color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:2px;margin-top:3px;">PROMO</div>':'')+'</div>'+
+      '<div class="mbl-carac">'+
+        '<div class="mbl-ct">Caractéristiques</div>'+
+        '<div class="mbl-carac-body"></div>'+
+        (a.dims?'<div class="mbl-dims">Dimensions : '+a.dims+'</div>':'')+
+      '</div>'+
+      '<div class="mbl-pz">'+
+        (dp?'<div class="mbl-prc">'+dp+'</div><div class="mbl-dev">Frs CFP</div>':'')+
+        (promo?'<div class="mbl-promo-tag">PROMO</div>':'')+
+      '</div>'+
+    '</div>'+
+    '<div class="mbl-ftr">'+
+      '<div class="mbl-ftrl">LIVRAISON ENTRE PAEA A MAHINA<br>MONTANT: 3 500 FRS.<br>LIVRAISON EN DEHORS DE PAEA A MAHINA<br>MONTANT: 5000FRS.<br>MONTAGE MEUBLE: 5 000 FRS</div>'+
     '</div>'+
   '</div>';
 }
@@ -821,58 +850,73 @@ $('btn-print').onclick=function(){
   if(!l||!l.arts.length){toast('Liste vide','er');return;}
   var isL=(curFmt==='a4'||curFmt==='meuble');
   var pa=$('prtarea');
-  pa.innerHTML='<style>@page{size:A4 '+(isL?'landscape':'portrait')+';margin:8mm;}'+
-    'body{margin:0;font-family:Inter,sans-serif;}'+
-    '.rgl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm;}'+
-    '.rgl-et{border:1px solid #999;background:#fff;display:flex;align-items:stretch;min-height:32px;break-inside:avoid;}'+
-    '.rgl-l{flex:1;min-width:0;padding:2px 4px;display:flex;flex-direction:column;justify-content:center;gap:1px;}'+
-    '.rgl-lib{font-family:Inter,sans-serif;font-size:6px;font-weight:700;line-height:1.2;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}'+
-    '.rgl-ref{font-size:5px;color:#555;font-family:monospace;}'+
-    '.rgl-bc{flex-shrink:0;padding:2px 3px;border-left:1px solid #ddd;display:flex;flex-direction:column;align-items:center;justify-content:center;}'+
-    '.rgl-ean{font-size:5px;font-family:monospace;text-align:center;margin-top:1px;}'+
-    '.rgl-r{flex-shrink:0;min-width:42px;background:#FFFA00;border-left:1px solid #ccc;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2px 4px;}'+
-    '.rgl-prc{font-family:Georgia,serif;font-size:16px;font-weight:900;color:#cc0000;line-height:1;}'+
-    '.rgl-dev{font-size:6px;font-weight:700;color:#cc0000;}'+
-    '.demi-et{border:1.5px solid #bbb;background:#fff;width:100%;padding:6mm 8mm;display:flex;flex-direction:column;min-height:132mm;break-inside:avoid;margin-bottom:2mm;}'+
-    '.demi-hdr{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ccc;padding-bottom:3mm;margin-bottom:5mm;}'+
-    '.demi-hl{display:flex;align-items:center;gap:8px;}'+
+  pa.innerHTML='<style>'+
+    '@page{size:A4 '+(isL?'landscape':'portrait')+';margin:6mm;}'+
+    'body{margin:0;font-family:Arial,Helvetica,sans-serif;}'+
+    /* ─── RÉGLETTE : 3 colonnes, 7 lignes par page ─── */
+    '.rgl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5mm;}'+
+    '.rgl-et{border:1px solid #aaa;background:#fff;display:grid;grid-template-rows:auto auto auto;break-inside:avoid;position:relative;}'+
+    '.rgl-top{display:flex;align-items:center;gap:3px;padding:1.5mm 2mm 0;border-bottom:1px solid #eee;}'+
+    '.rgl-sn{font-size:5px;font-weight:900;color:#cc0000;font-style:italic;text-transform:uppercase;}'+
+    '.rgl-ville{font-size:4.5px;color:#333;margin-left:4px;}'+
+    '.rgl-mid{padding:1mm 2mm;flex:1;}'+
+    '.rgl-lib{font-size:7px;font-weight:900;text-transform:uppercase;line-height:1.2;}'+
+    '.rgl-ref{font-size:5px;color:#555;font-family:monospace;margin-top:1px;}'+
+    '.rgl-bc-row{padding:1mm 2mm;display:flex;flex-direction:column;align-items:flex-start;}'+
+    '.rgl-ean{font-size:4px;font-family:monospace;}'+
+    '.rgl-r{position:absolute;right:0;top:0;bottom:0;width:30%;background:#FFFA00;border-left:1px solid #ccc;display:flex;flex-direction:column;align-items:center;justify-content:center;}'+
+    '.rgl-fl{font-size:8px;}'+
+    '.rgl-prc{font-family:Georgia,serif;font-size:14px;font-weight:900;color:#000;line-height:1;}'+
+    '.rgl-dev{font-size:5px;font-weight:700;color:#000;}'+
+    /* ─── DEMI A4 : 2 par page portrait ─── */
+    '.demi-et{border:1.5px solid #bbb;background:#fff;padding:8mm 10mm;display:flex;flex-direction:column;height:138mm;break-inside:avoid;box-sizing:border-box;overflow:hidden;margin-bottom:0;}'+
+    '.demi-hdr{display:flex;align-items:flex-start;justify-content:space-between;border-bottom:none;padding-bottom:0;margin-bottom:2mm;}'+
+    '.demi-hl{display:flex;align-items:center;gap:6px;}'+
     '.demi-hr{text-align:right;}'+
-    '.demi-hr .sn{font-family:Georgia,serif;font-size:17px;font-weight:900;color:#cc0000;}'+
-    '.demi-hr .st{font-size:11px;color:#333;}'+
-    '.demi-lib{font-family:Georgia,serif;font-size:32px;font-weight:900;text-align:center;text-transform:uppercase;line-height:1.2;flex:1;display:flex;align-items:center;justify-content:center;padding:4mm 0;}'+
-    '.demi-pz{text-align:center;}'+
-    '.demi-prc{font-family:Georgia,serif;font-size:70px;font-weight:900;line-height:1;}'+
-    '.demi-old{font-size:20px;text-decoration:line-through;color:#999;}'+
-    '.demi-promo{display:inline-block;background:#cc0000;color:#fff;font-size:16px;font-weight:700;padding:3px 14px;border-radius:3px;margin-top:4px;}'+
-    '.demi-ftr{display:flex;justify-content:space-between;border-top:1px solid #ccc;padding-top:2mm;margin-top:auto;font-size:10px;color:#666;}'+
-    '.a4-et{border:1.5px solid #bbb;background:#fff;width:100%;padding:10mm 14mm;display:flex;flex-direction:column;min-height:185mm;break-inside:avoid;}'+
-    '.a4-hdr{display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #ccc;padding-bottom:5mm;margin-bottom:8mm;}'+
-    '.a4-hl{display:flex;align-items:center;gap:12px;}'+
+    '.demi-sn{font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:900;color:#cc0000;text-transform:uppercase;}'+
+    '.demi-st{font-size:10px;color:#333;}'+
+    '.demi-lib{font-family:Arial,Helvetica,sans-serif;font-size:26px;font-weight:900;text-align:center;text-transform:uppercase;line-height:1.15;padding:4mm 0;flex:1;display:flex;align-items:center;justify-content:center;}'+
+    '.demi-spacer{flex:1;}'+
+    '.demi-pz{text-align:center;padding-bottom:2mm;}'+
+    '.demi-prc{font-family:Arial,Helvetica,sans-serif;font-size:62px;font-weight:900;color:#000;line-height:1;}'+
+    '.demi-ftr{display:flex;justify-content:space-between;padding-top:2mm;border-top:none;font-size:10px;color:#333;text-decoration:underline;}'+
+    '.demi-ref{text-decoration:underline;}'+
+    /* ─── A4 PAYSAGE : 1 par page ─── */
+    '.a4-et{border:1.5px solid #bbb;background:#fff;padding:10mm 15mm;display:flex;flex-direction:column;height:193mm;break-inside:avoid;box-sizing:border-box;overflow:hidden;}'+
+    '.a4-hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:4mm;}'+
+    '.a4-hl{display:flex;align-items:center;gap:10px;}'+
     '.a4-hr{text-align:right;}'+
-    '.a4-hr .sn{font-family:Georgia,serif;font-size:26px;font-weight:900;color:#cc0000;}'+
-    '.a4-hr .st{font-size:14px;color:#333;}'+
-    '.a4-lib{font-family:Georgia,serif;font-size:56px;font-weight:900;text-align:center;text-transform:uppercase;line-height:1.2;flex:1;display:flex;align-items:center;justify-content:center;padding:8mm 0;}'+
-    '.a4-pz{text-align:center;}'+
-    '.a4-prc{font-family:Georgia,serif;font-size:120px;font-weight:900;line-height:1;}'+
-    '.a4-old{font-size:30px;text-decoration:line-through;color:#999;}'+
-    '.a4-promo{display:inline-block;background:#cc0000;color:#fff;font-size:26px;font-weight:700;padding:4px 20px;border-radius:4px;margin-top:6px;}'+
-    '.a4-ftr{display:flex;justify-content:space-between;border-top:2px solid #ccc;padding-top:4mm;margin-top:auto;font-size:13px;color:#666;}'+
-    '.mbl-et{border:1.5px solid #aaa;background:#fff;width:100%;padding:4mm 6mm;display:flex;flex-direction:column;break-inside:avoid;margin-bottom:4mm;}'+
-    '.mbl-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:3mm;}'+
-    '.mbl-hl{display:flex;align-items:center;gap:6px;}'+
-    '.mbl-hr{text-align:right;}'+
-    '.mbl-hr .sn{font-family:Georgia,serif;font-size:13px;font-weight:700;color:#cc0000;}'+
-    '.mbl-hr .st{font-size:10px;color:#333;}'+
-    '.mbl-body{display:flex;gap:4mm;}'+
-    '.mbl-fiche{border:1px solid #ccc;padding:2mm 3mm;min-width:105px;flex-shrink:0;}'+
-    '.mbl-fl{font-size:8px;color:#888;text-transform:uppercase;}'+
-    '.mbl-fv{font-size:12px;font-weight:700;line-height:1.3;margin-bottom:2mm;}'+
-    '.mbl-ean{font-size:8px;font-family:monospace;color:#555;border-top:1px solid #eee;padding-top:1mm;margin-top:2mm;}'+
-    '.mbl-carac{border:1px solid #e0dda0;background:#FAFACC;padding:2mm 3mm;flex:1;min-height:24mm;}'+
-    '.mbl-ct{font-size:8px;font-weight:700;color:#aa8800;margin-bottom:1mm;text-transform:uppercase;}'+
-    '.mbl-pz{flex-shrink:0;min-width:65px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-left:3mm;}'+
-    '.mbl-prc{font-family:Georgia,serif;font-size:36px;font-weight:900;color:#cc0000;line-height:1;}'+
-    '.mbl-dev{font-size:12px;font-weight:700;color:#cc0000;}'+
+    '.a4-sn{font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:900;color:#cc0000;text-transform:uppercase;}'+
+    '.a4-st{font-size:13px;color:#333;}'+
+    '.a4-lib{font-family:Arial,Helvetica,sans-serif;font-size:52px;font-weight:900;text-align:center;text-transform:uppercase;line-height:1.15;flex:1;display:flex;align-items:center;justify-content:center;padding:6mm 0;}'+
+    '.a4-spacer{flex:1;}'+
+    '.a4-pz{text-align:center;padding-bottom:4mm;}'+
+    '.a4-prc{font-family:Arial,Helvetica,sans-serif;font-size:110px;font-weight:900;color:#000;line-height:1;}'+
+    '.a4-ftr{display:flex;justify-content:space-between;padding-top:3mm;font-size:12px;color:#333;}'+
+    '.a4-ref{text-decoration:underline;}'+
+    /* ─── MEUBLE : 3 colonnes A4 paysage ─── */
+    '.mbl-et{border:1px solid #aaa;background:#fff;padding:3mm;display:flex;flex-direction:column;break-inside:avoid;min-height:90mm;box-sizing:border-box;}'+
+    '.mbl-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:2mm;border-bottom:1px solid #ddd;padding-bottom:1mm;}'+
+    '.mbl-hl{display:flex;align-items:center;gap:4px;}'+
+    '.mbl-hr{text-align:right;line-height:1.2;}'+
+    '.mbl-sn{font-size:8px;font-weight:900;color:#cc0000;text-transform:uppercase;font-style:italic;}'+
+    '.mbl-st{font-size:7px;color:#333;}'+
+    '.mbl-label{font-size:8px;font-weight:700;color:#333;border:1px solid #999;padding:0 3px;}'+
+    '.mbl-body{display:flex;gap:2mm;flex:1;}'+
+    '.mbl-fiche{border:1px solid #ccc;padding:1.5mm;width:90px;flex-shrink:0;font-size:8px;}'+
+    '.mbl-row{display:grid;grid-template-columns:40px 1fr;gap:1mm;margin-bottom:1mm;}'+
+    '.mbl-fl{font-style:italic;color:#555;font-size:7px;}'+
+    '.mbl-fv{font-weight:700;font-size:8px;line-height:1.2;}'+
+    '.mbl-gencod{font-size:6.5px;font-family:monospace;color:#444;margin-top:2mm;border-top:1px solid #eee;padding-top:1mm;font-style:italic;}'+
+    '.mbl-carac{border:1px solid #e0dda0;background:#FAFACC;padding:1.5mm;flex:1;display:flex;flex-direction:column;}'+
+    '.mbl-ct{font-style:italic;font-size:7px;font-weight:700;color:#aa8800;margin-bottom:1mm;}'+
+    '.mbl-carac-body{flex:1;}'+
+    '.mbl-dims{font-size:6.5px;font-style:italic;color:#555;margin-top:auto;}'+
+    '.mbl-pz{flex-shrink:0;width:55px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-left:2mm;}'+
+    '.mbl-prc{font-family:Georgia,serif;font-size:30px;font-weight:900;color:#cc0000;line-height:1;text-align:center;}'+
+    '.mbl-dev{font-size:10px;font-weight:700;color:#cc0000;font-style:italic;}'+
+    '.mbl-promo-tag{background:#cc0000;color:#fff;font-size:7px;font-weight:700;padding:1px 4px;border-radius:2px;margin-top:2px;}'+
+    '.mbl-ftr{font-size:6px;color:#333;line-height:1.4;border-top:1px solid #ddd;padding-top:1.5mm;margin-top:1.5mm;}'+
     '</style>'+buildEts(l.arts,curFmt);
   pa.style.display='block';
   setTimeout(function(){window.print();pa.style.display='none';},400);
