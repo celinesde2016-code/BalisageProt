@@ -912,66 +912,92 @@ function pdfReglette(jsPDF, arts, site, tel){
     var code = a.code ? String(a.code).padStart(6,'0') : '';
     var prix = prixFmt(a);
 
-    // ── Bordure ──
+    // ── Bordure étiquette ──
+    // rect(x, y, largeur, hauteur) — trait gris foncé, épaisseur 0.25mm
     doc.setDrawColor(120); doc.setLineWidth(0.25);
     doc.rect(x, y, cw, ch);
 
-    // ── Zone prix fond jaune ──
-    doc.setFillColor(255,250,0);
-    doc.rect(x+infoW, y, pzW, ch, 'F');
-    doc.setDrawColor(150); doc.setLineWidth(0.2);
-    doc.line(x+infoW, y, x+infoW, y+ch);
-
-    // ── Header : logo + TAHITI PAS CHER + site ──
+    // ── Header : logo à gauche, "TAHITI PAS CHER" en rouge, site à droite ──
     var logoSz=4.5;
+    // addLogo(doc, posX, posY, taille) — logo hibiscus
     addLogo(doc, x+1, y+1, logoSz);
+    // "TAHITI PAS CHER" en rouge italique gras, juste après le logo
     doc.setFont('helvetica','bolditalic');
     doc.setFontSize(4.8); doc.setTextColor(204,0,0);
     doc.text('TAHITI PAS CHER', x+1+logoSz+0.8, y+4.2);
+    // Nom du site aligné à droite (dans la zone info, pas dans la zone prix)
     doc.setFont('helvetica','bold');
     doc.setFontSize(4.8); doc.setTextColor(0,0,0);
     doc.text(site, x+infoW-1, y+4.2, {align:'right'});
 
-    // ── Libellé (2 lignes max) ──
+    // ── Libellé produit (2 lignes max) ──
+    // splitTextToSize coupe automatiquement si trop long
     doc.setFont('helvetica','bold');
     doc.setFontSize(6.5); doc.setTextColor(0,0,0);
     var libLines = doc.splitTextToSize(a.lib, infoW-3);
     if(libLines.length>2) libLines=libLines.slice(0,2);
+    // text(texte, x, y) — y+9.5 = position verticale dans l'étiquette
     doc.text(libLines, x+1.5, y+9.5, {lineHeightFactor:1.25});
 
-    // ── Ligne code + EAN ──
-    // Petit encadré "the EAN-13 / code / accents on" style PDF modèle
-    doc.setDrawColor(180); doc.setLineWidth(0.15);
-    doc.rect(x+1, y+15, infoW-2.5, 8);
+    // ── Code-barres EAN-13 ──
+    // On dessine le code-barres SVG converti en canvas via bcSVG()
+    // bcSVG(ean, largeur_px, hauteur_px) est déjà défini dans l'appli
+    // Ici on affiche l'EAN en texte monospace sous forme de barres simulées
+    if(ean){
+      // Barres verticales simulées (jsPDF ne gère pas nativement les barcodes)
+      // On dessine chaque chiffre comme une série de traits noirs/blancs
+      var bcX=x+1.5, bcY=y+16, bcW=infoW-5, bcH=7;
+      // Fond blanc pour la zone barcode
+      doc.setFillColor(255,255,255);
+      doc.rect(bcX, bcY, bcW, bcH, 'F');
+      // Simulation visuelle : traits noirs de largeurs variables
+      doc.setFillColor(0,0,0);
+      var barW=bcW/95; // ~95 modules pour EAN-13
+      var digits=ean.replace(/\s/g,'');
+      // Alternance de barres noires/blanches selon les chiffres
+      var pos=bcX;
+      for(var di=0;di<digits.length;di++){
+        var d=parseInt(digits[di])||0;
+        // Largeur proportionnelle au chiffre (simplifié)
+        var bw=(d%3+1)*barW;
+        if(di%2===0){ doc.rect(pos, bcY, bw, bcH-1.5, 'F'); }
+        pos+=bw+(barW*0.8);
+        if(pos>bcX+bcW-barW) break;
+      }
+      // Numéro EAN sous les barres
+      doc.setFont('helvetica','normal');
+      doc.setFontSize(3.5); doc.setTextColor(0,0,0);
+      doc.text(ean, bcX+bcW/2, bcY+bcH+0.5, {align:'center'});
+    }
+
+    // ── Mot "Code" + numéro de référence ──
+    // Pas d'encadré — juste le mot "Code" au-dessus du numéro
     doc.setFont('helvetica','normal');
-    doc.setFontSize(4); doc.setTextColor(80,80,80);
-    doc.text('the EAN-13', x+1.5, y+17.5);
-    doc.text('accents on', x+1.5, y+21.5);
+    doc.setFontSize(3.8); doc.setTextColor(80,80,80);
+    doc.text('Code:', x+1.5, y+25.5);
     doc.setFont('helvetica','bold');
     doc.setFontSize(4); doc.setTextColor(0,0,0);
-    doc.text('code', x+1.5+14, y+17.5);
-    doc.text('Code:', x+1.5+14, y+19.5);
-    doc.setFont('helvetica','normal');
-    doc.setFontSize(4); doc.setTextColor(60,60,60);
-    if(ean) doc.text(ean, x+1.5, y+25.5);
-    doc.text(code, x+1.5+12, y+25.5);
+    doc.text(code, x+1.5, y+28);
 
-    // Tirets décoratifs bas (comme PDF modèle)
-    doc.setFont('helvetica','normal');
-    doc.setFontSize(4); doc.setTextColor(120,120,120);
-    doc.text('— — — —', x+1, y+29);
-
-    // ── Prix dans zone jaune ──
+    // ── Prix avec surlignage jaune (pas de remplissage de toute la zone) ──
+    // On surligne UNIQUEMENT le texte du prix avec un rectangle jaune
+    var prixTxt = prix;
+    var prixX = x+infoW+pzW/2;
+    var prixY = y+19;
+    // Rectangle jaune derrière le prix seulement (surlignage)
+    // setFontSize avant de calculer la largeur approx du texte
+    doc.setFontSize(15);
+    var prixLarg = prixTxt.length * 2.8; // estimation largeur en mm
+    doc.setFillColor(255,250,0);
+    // rect(centreX - demiLarg, centreY - hauteur, largeur, hauteur)
+    doc.rect(prixX - prixLarg/2 - 1, prixY-10, prixLarg+2, 11, 'F');
+    // Prix en noir par-dessus le surlignage
     doc.setFont('helvetica','bold');
-    doc.setFontSize(4.5); doc.setTextColor(0,0,0);
-    // Flèche vers le haut
-    doc.text('▲', x+infoW+pzW/2, y+4, {align:'center'});
-    // Prix en gros
-    doc.setFontSize(17);
-    doc.text(prix, x+infoW+pzW/2, y+16, {align:'center'});
-    // XPF
-    doc.setFontSize(5); doc.setFont('helvetica','bold');
-    doc.text('XPF', x+infoW+pzW/2, y+21, {align:'center'});
+    doc.setTextColor(0,0,0);
+    doc.text(prixTxt, prixX, prixY, {align:'center'});
+    // "XPF" en dessous, sans fond jaune
+    doc.setFontSize(5);
+    doc.text('XPF', prixX, prixY+4, {align:'center'});
   });
 
   doc.save('etiquettes_reglette.pdf');
